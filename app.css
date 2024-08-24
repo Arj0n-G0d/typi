@@ -1,18 +1,19 @@
 body {
     display :flex;
-    width:100vw;
+    width:98vw;
     height:98vh;
     align-items: center;
     justify-content: center;
     background-color: black;    
 }
 .keyboard {
+    position: relative;
     width:800px;
     height:316px;
-    border: 2px solid #b9b9b9;
     border-radius: 15px;
-}
 
+    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+}
 .row {
     display : flex;
     align-items: center;
@@ -20,15 +21,14 @@ body {
     height:60px;
     margin : 15px auto 0 auto;
 }
-
 .space {
-    border: 2px solid #b9b9b9;
-    border-radius: 15px;
+    border-radius:15px;
     width:420px; 
     height:55px;
     margin: 15px auto;
-}
 
+    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+}
 .one {
     width:800px;
 }
@@ -38,7 +38,6 @@ body {
 .three {
     width:560px;
 }
-
 .key {
     box-sizing: border-box;
     display: flex;
@@ -47,17 +46,81 @@ body {
     width : 60px;
     height : 60px;
     border-radius: 10px;
-    color:#b9b9b9;
-    border:2px solid #b9b9b9;
-}
 
+    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+}
 .keyCharacter {
     display:inline-block;
     font-size: 20px;
 }
-
 .keyPress {
-    color:#fca311;
-    border:2px solid #fca311;
-    transform: scale(1.1);
+    color:#fca311 !important;
+    border:2px solid #fca311 !important;
+    transform: scale(1.1) !important;
+}
+
+@keyframes pressed{
+    0%{
+        color:black;
+        border:2px solid black;
+    }
+    50%  {
+        color:#fca311;
+        border:2px solid #fca311;
+        transform: scale(1.5);
+    }
+    100% {
+        color:#e5e5e5;
+        border:2px solid #e5e5e5;
+    }
+}
+
+@keyframes pushdowned {
+    0% {
+        top:0px;
+        color:#e5e5e550;
+        border: 2px solid #e5e5e550;
+    }
+    100% {
+        top:100px;
+        color:#e5e5e5;
+        border:2px solid #e5e5e5;
+    }
+}
+
+#T{
+    animation-name: pressed;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-fill-mode: both;
+}
+#Y{
+    animation-name: pressed;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-fill-mode: both;
+}
+#P{
+    animation-name: pressed;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.6s;
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-fill-mode: both;
+}
+#I{
+    animation-name: pressed;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-delay: 0.9s;
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-fill-mode: both;
 }
