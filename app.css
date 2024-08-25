@@ -2,18 +2,21 @@ body {
     display :flex;
     width:98vw;
     height:98vh;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;    
+    background-color: black; 
 }
+
 .keyboard {
     position: relative;
     width:800px;
-    height:316px;
+    height:389px;
     border-radius: 15px;
 
-    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+    animation: pushdowned-keyboard 1s ease-out 2s 1 normal both;
 }
+
 .row {
     display : flex;
     align-items: center;
@@ -21,23 +24,50 @@ body {
     height:60px;
     margin : 15px auto 0 auto;
 }
+
 .space {
     border-radius:15px;
     width:420px; 
     height:55px;
     margin: 15px auto;
 
-    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+    animation: pushdowned 1s ease-out 2s 1 normal both;
 }
+
+.backspace {
+    border-radius:15px;
+    width:212px; 
+    height:55px;
+    margin : 0 18px 0 0;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+
+    animation: pushdowned 1s ease-out 2s 1 normal both;
+}
+
+.larr {
+    display: inline-block;
+    font-size: 45px;
+}
+
+.zero {
+    width:800px;
+    justify-content:flex-end;
+}
+
 .one {
     width:800px;
 }
+
 .two {
     width:720px;
 }
+
 .three {
     width:560px;
 }
+
 .key {
     box-sizing: border-box;
     display: flex;
@@ -47,12 +77,14 @@ body {
     height : 60px;
     border-radius: 10px;
 
-    animation: pushdowned 1s ease-out 0.9s 1 normal both;
+    animation: pushdowned 1s ease-out 2s 1 normal both;
 }
+
 .keyCharacter {
     display:inline-block;
     font-size: 20px;
 }
+
 .keyPress {
     color:#fca311 !important;
     border:2px solid #fca311 !important;
@@ -78,49 +110,114 @@ body {
 @keyframes pushdowned {
     0% {
         top:0px;
-        color:#e5e5e550;
-        border: 2px solid #e5e5e550;
+        color:black;
+        border: 2px solid black;
     }
     100% {
-        top:100px;
+        top:125px;
         color:#e5e5e5;
         border:2px solid #e5e5e5;
     }
 }
 
+@keyframes pushdowned-keyboard {
+    0% {
+        top:0px;
+        border: 8px solid black;
+    }
+    100% {
+        top:125px;
+        border:5px solid #e5e5e5;
+    }
+}
+
 #T{
     animation-name: pressed;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
     animation-timing-function: linear;
-    animation-delay: 0s;
+    animation-delay: 0.4s;
     animation-iteration-count: 1;
     animation-direction:normal;
     animation-fill-mode: both;
 }
+
 #Y{
     animation-name: pressed;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
     animation-timing-function: linear;
-    animation-delay: 0.3s;
+    animation-delay: 0.8s;
     animation-iteration-count: 1;
     animation-direction:normal;
     animation-fill-mode: both;
 }
+
 #P{
     animation-name: pressed;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
     animation-timing-function: linear;
-    animation-delay: 0.6s;
+    animation-delay: 1.2s;
     animation-iteration-count: 1;
     animation-direction:normal;
     animation-fill-mode: both;
 }
+
 #I{
     animation-name: pressed;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
     animation-timing-function: linear;
-    animation-delay: 0.9s;
+    animation-delay: 1.6s;
     animation-iteration-count: 1;
     animation-direction:normal;
     animation-fill-mode: both;
+}
+
+.reader {
+    width:800px;
+    color:#e5e5e5;
+    height:50px;
+    font-size: 25px;
+    overflow: hidden;
+}
+
+.typi {
+    font-size: 50px;
+    animation: blurr 1s ease-in-out 2s 1 normal none;
+    text-align: center;
+}
+
+.cursor {
+    animation-name:blink;
+    animation-timing-function:steps(1,end);
+    animation-duration:0.8s;
+    animation-iteration-count:infinite;
+}
+
+.letter {
+    color:#e5e5e550;
+}
+
+.correct {
+    color:#e5e5e5;
+}
+
+.incorrect {
+    color:rgba(255, 0, 0, 0.9);
+}
+
+@keyframes blurr {
+    0% {
+        filter:blur(0px);
+    }
+    100% {
+        filter:blur(100px);
+    }
+}
+
+@keyframes blink {
+    0%,100% {
+        border-left:2px solid #e5e5e5;
+    }
+    50% {
+        border-left:2px solid black;
+    }
 }
