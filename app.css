@@ -1,3 +1,7 @@
+*{
+    margin:0;
+    padding:0;
+}
 body {
     display :flex;
     width:98vw;
@@ -14,7 +18,7 @@ body {
     height:389px;
     border-radius: 15px;
 
-    animation: pushdowned-keyboard 1s ease-out 2s 1 normal both;
+    animation: pushdownedAndColorChange 1s ease-out 2s 1 normal both;
 }
 
 .row {
@@ -31,7 +35,7 @@ body {
     height:55px;
     margin: 15px auto;
 
-    animation: pushdowned 1s ease-out 2s 1 normal both;
+    animation: colorChange 1s ease-out 2s 1 normal both;
 }
 
 .backspace {
@@ -43,7 +47,7 @@ body {
     justify-content:center;
     align-content:center;
 
-    animation: pushdowned 1s ease-out 2s 1 normal both;
+    animation: colorChange 1s ease-out 2s 1 normal both;
 }
 
 .larr {
@@ -77,7 +81,7 @@ body {
     height : 60px;
     border-radius: 10px;
 
-    animation: pushdowned 1s ease-out 2s 1 normal both;
+    animation: colorChange 1s ease-out 2s 1 normal both;
 }
 
 .keyCharacter {
@@ -102,88 +106,87 @@ body {
         transform: scale(1.5);
     }
     100% {
-        color:#e5e5e5;
-        border:2px solid #e5e5e5;
+        color:#e5e5e550;
+        border:2px solid #e5e5e550;
     }
 }
 
-@keyframes pushdowned {
+@keyframes colorChange {
     0% {
-        top:0px;
         color:black;
         border: 2px solid black;
     }
     100% {
-        top:125px;
-        color:#e5e5e5;
-        border:2px solid #e5e5e5;
+        color:#e5e5e550;
+        border:2px solid #e5e5e550;
     }
 }
 
-@keyframes pushdowned-keyboard {
+@keyframes pushdownedAndColorChange {
     0% {
         top:0px;
-        border: 8px solid black;
+        border: 5px solid black;
     }
     100% {
         top:125px;
-        border:5px solid #e5e5e5;
+        border:5px solid #e5e5e550;
     }
 }
 
-#T{
+.keyT,.keyY,.keyP,.keyI {
     animation-name: pressed;
     animation-duration: 0.4s;
     animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction:normal;
+    animation-fill-mode: both;
+}
+.keyT{
     animation-delay: 0.4s;
-    animation-iteration-count: 1;
-    animation-direction:normal;
-    animation-fill-mode: both;
 }
 
-#Y{
-    animation-name: pressed;
-    animation-duration: 0.4s;
-    animation-timing-function: linear;
+.keyY{
     animation-delay: 0.8s;
-    animation-iteration-count: 1;
-    animation-direction:normal;
-    animation-fill-mode: both;
 }
 
-#P{
-    animation-name: pressed;
-    animation-duration: 0.4s;
-    animation-timing-function: linear;
+.keyP{
     animation-delay: 1.2s;
-    animation-iteration-count: 1;
-    animation-direction:normal;
-    animation-fill-mode: both;
 }
 
-#I{
-    animation-name: pressed;
-    animation-duration: 0.4s;
-    animation-timing-function: linear;
+.keyI{
     animation-delay: 1.6s;
-    animation-iteration-count: 1;
-    animation-direction:normal;
-    animation-fill-mode: both;
 }
 
 .reader {
+    display: flex;
+    align-items:center;
+    width:800px;
+    color:#e5e5e550;
+    height:50px;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+.readerOrig {
     width:800px;
     color:#e5e5e5;
     height:50px;
-    font-size: 25px;
-    white-space:nowrap;
-    overflow: hidden;
+    text-align:center;
+    font-size: 50px;
+    animation-name: unblurr;
+    animation-duration: 0.5s;;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0ms;
 }
 
 .typi {
+    width:800px;
+    color:#e5e5e5;
+    height:50px;
     font-size: 50px;
-    animation: blurr 1s ease-in-out 2s 1 normal none;
-    text-align: center;
+    animation: blurr 0.5s ease-in-out 2s 1 normal both;
+    text-align:center;
 }
 
 .cursor {
@@ -194,7 +197,9 @@ body {
 }
 
 .letter {
+    display: inline-block;
     color:#e5e5e550;
+    font-size:40px;
 }
 
 .correct {
@@ -214,11 +219,122 @@ body {
     }
 }
 
+@keyframes unblurr {
+    0% {
+        filter:blur(100px);
+    }
+    100% {
+        filter:blur(0px);
+    }
+}
+
 @keyframes blink {
     0%,100% {
         border-left:2px solid #e5e5e5;
     }
     50% {
         border-left:2px solid black;
+    }
+}
+
+.resultAvg {
+    width:200px;
+    height:200px;
+    position: fixed;
+    top:0;
+    right:0;
+    display:none;
+}
+
+.resultMax {
+    width:200px;
+    height:200px;
+    position:fixed;
+    top:0;
+    left:0;
+    display:none;
+}
+
+.resultAfter {
+    animation: appear 1s linear 0s 1 normal both;
+}
+
+.keyboardAfter {
+    animation: disappear-keyboard 1s linear 0s 1 normal both;
+}
+.keyCharacterAfter {
+    animation: disappear 1s linear 0s 1 normal both;
+}
+
+@keyframes appear {
+    0% {
+        border: 2px solid black;
+    }
+    100%{
+        border:2px solid #e5e5e5;
+    }
+}
+
+@keyframes disappear-keyboard {
+    0% {
+        color:#e5e5e5;
+        border:5px solid #e5e5e5;
+        top:125px;
+    }
+    100% {
+        color:#e5e5e550;
+        border:5px solid #e5e5e550;
+        top:125px;
+    }
+}
+
+@keyframes disappear{
+    0% {
+        color:#e5e5e5;
+        border:2px solid #e5e5e5;
+    }
+    100% {
+        color:#e5e5e550;
+        border:2px solid #e5e5e550;
+    }
+}
+
+.appearFromDimAnimationKeyboard{
+    animation: appearFromDimKeyboard 1000ms linear 0ms 1 normal both;
+}
+
+.disappearToDimAnimationKeyboard {
+    animation: appearFromDimKeyboard 1000ms linear 0ms 1 reverse both;
+}
+
+@keyframes appearFromDimKeyboard{
+    0% {
+        top:125px;
+        color:#e5e5e550;
+        border:5px solid #e5e5e550;
+    }
+    100% {
+        top:125px;
+        color:#e5e5e5;
+        border:5px solid #e5e5e5;
+    }
+}
+
+.appearFromDimAnimation{
+    animation: appearFromDim 1000ms linear 0ms 1 normal both;
+}
+
+.disappearToDimAnimation{
+    animation: appearFromDim 1000ms linear 0ms 1 reverse both;
+}
+
+@keyframes appearFromDim{
+    0% {
+        color:#e5e5e550;
+        border:2px solid #e5e5e550;
+    }
+    100% {
+        color:#e5e5e5;
+        border:2px solid #e5e5e5;
     }
 }
