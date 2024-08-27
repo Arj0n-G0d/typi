@@ -15,16 +15,30 @@ class Game {
         this.cursorArray[this.cursorIndex].classList.add("cursor");
         this.lastCursorIndex=0;
         this.thresh=25;
-        this.result=document.querySelector(".resultAvg");
-        this.result.style.display="none";
 
-        for(let key in keys)
+        for(let key in keys) {
+            keys[key].classList.remove("disappearToDimAnimation");
+            void keys[key].offsetWidth;
             keys[key].classList.add("appearFromDimAnimation");
+        }
         const keyboard=document.querySelector(".keyboard");
+        keyboard.classList.remove("disappearToDimAnimationKeyboard");
+        void keyboard.offsetWidth;
         keyboard.classList.add("appearFromDimAnimationKeyboard");
+
+        this.resultAvg=document.querySelector(".resultAvg");
+        this.resultMax=document.querySelector(".resultMax");
+
+        this.resultAvg.classList.remove("appearFromDark");
+        void this.resultAvg.offsetWidth;
+        this.resultAvg.classList.add("disappearToDark");  
+        this.resultMax.classList.remove("appearFromDark");
+        void this.resultMax.offsetWidth;
+        this.resultMax.classList.add("disappearToDark");     
     }
     addString() {
         const reader=document.querySelector(".readerOrig");
+        reader.classList.remove("readerOrig");
         reader.textContent="";
         for(let i=0;i<this.string.length;i++) {
             const letter=document.createElement("span");
@@ -35,12 +49,10 @@ class Game {
                 letter.textContent="\u00A0";
             reader.appendChild(letter);
         }
-        reader.classList.remove("readerOrig");
+        void reader.offsetWidth;
+        reader.classList.add("reader");
     }
     gameOver() {
-        this.result.style.display="block";
-        this.result.classList.add("resultAfter");
-        
         for(let key in keys) {
             keys[key].classList.remove("appearFromDimAnimation");
             void keys[key].offsetWidth;
@@ -50,6 +62,21 @@ class Game {
         keyboard.classList.remove("appearFromDimAnimationKeyboard");
         void keyboard.offsetWidth;
         keyboard.classList.add("disappearToDimAnimationKeyboard");
+
+        const reader=document.querySelector(".reader");
+        reader.classList.remove("reader");
+        void reader.offsetWidth;
+        reader.classList.add("readerOrig");
+        reader.textContent="Press Enter to Start";
+
+        this.resultAvg.style.display="block";
+        this.resultMax.style.display="block";
+        this.resultAvg.classList.remove("disappearToDark");
+        void this.resultAvg.offsetWidth;
+        this.resultAvg.classList.add("appearFromDark");
+        this.resultMax.classList.remove("disappearToDark");
+        void this.resultMax.offsetWidth;
+        this.resultMax.classList.add("appearFromDark");       
     }
 }
 
@@ -66,15 +93,15 @@ function typeTypi() {
     },2000);
     setTimeout(()=>{
         reader.classList.remove("typi");
-        reader.textContent="Press Enter to Start";
         reader.classList.add("readerOrig");
+        reader.textContent="Press Enter to Start";
     },2500);
 }
 
 typeTypi();
 setTimeout(()=>{
     game=new Game();
-},3000);
+},5000);
 
 document.body.addEventListener("keydown",(e)=>{
     if(!pressed[e.code]) {

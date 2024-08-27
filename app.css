@@ -157,6 +157,33 @@ body {
     animation-delay: 1.6s;
 }
 
+@keyframes appearFromDark {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.appearFromDark {
+    animation-name: appearFromDark;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+}
+
+.disappearToDark {
+    animation-name: appearFromDark;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-direction: reverse;
+    animation-fill-mode: both;
+}
+
 .reader {
     display: flex;
     align-items:center;
@@ -165,6 +192,12 @@ body {
     height:50px;
     white-space:nowrap;
     overflow:hidden;
+    animation-name: appearFromDark;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-fill-mode: both;
 }
 
 .readerOrig {
@@ -173,8 +206,8 @@ body {
     height:50px;
     text-align:center;
     font-size: 50px;
-    animation-name: unblurr;
-    animation-duration: 0.5s;;
+    animation-name: appearFromDark;
+    animation-duration: 1s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     animation-delay: 0ms;
@@ -185,7 +218,7 @@ body {
     color:#e5e5e5;
     height:50px;
     font-size: 50px;
-    animation: blurr 0.5s ease-in-out 2s 1 normal both;
+    animation: blurr 1s ease-in-out 2s 1 normal both;
     text-align:center;
 }
 
@@ -219,15 +252,6 @@ body {
     }
 }
 
-@keyframes unblurr {
-    0% {
-        filter:blur(100px);
-    }
-    100% {
-        filter:blur(0px);
-    }
-}
-
 @keyframes blink {
     0%,100% {
         border-left:2px solid #e5e5e5;
@@ -237,33 +261,32 @@ body {
     }
 }
 
-.resultAvg {
+.result {
+    top:0;
+    position:fixed;
     width:200px;
     height:200px;
-    position: fixed;
-    top:0;
-    right:0;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    font-size:40px;
+    color:#fca311;
+}
+
+.left {left:0}
+.right {right:0}
+
+.resultAvg {
     display:none;
 }
 
 .resultMax {
-    width:200px;
-    height:200px;
-    position:fixed;
-    top:0;
-    left:0;
     display:none;
 }
 
 .resultAfter {
     animation: appear 1s linear 0s 1 normal both;
-}
-
-.keyboardAfter {
-    animation: disappear-keyboard 1s linear 0s 1 normal both;
-}
-.keyCharacterAfter {
-    animation: disappear 1s linear 0s 1 normal both;
 }
 
 @keyframes appear {
@@ -300,11 +323,23 @@ body {
 }
 
 .appearFromDimAnimationKeyboard{
-    animation: appearFromDimKeyboard 1000ms linear 0ms 1 normal both;
+    animation-name: appearFromDimKeyboard;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
 }
 
 .disappearToDimAnimationKeyboard {
-    animation: appearFromDimKeyboard 1000ms linear 0ms 1 reverse both;
+    animation-name: appearFromDimKeyboard;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: reverse;
+    animation-fill-mode: both;
 }
 
 @keyframes appearFromDimKeyboard{
