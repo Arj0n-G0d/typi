@@ -2,13 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>TYPI</title>
+    <title>TYPI - Minimalistic Typing Challenge</title>
     <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
-    <div class="result left"><div class="resultAvg">65</div></div>
-    <div class="result right"><div class="resultMax">70</div></div>
+    <div class="result left">
+        <div class="resultAvg">
+            <div class="text">Average</div>
+            <div class="avgSpeed">65</div>
+            <div class="text">WPM</div>
+        </div>
+    </div>
+    <div class="result right">
+        <div class="resultMax">
+            <div class="text">Maximum</div>
+            <div class="maxSpeed">70</div>
+            <div class="text">WPM</div>
+        </div>
+    </div>
     <div class="typi"></div>
     <div class="keyboard">
         <div class="row zero"><span class="backspace" id="BACKSPACE"><div class="larr">&larr;</div></span></div>
@@ -46,6 +58,7 @@
         </div>
         <div class="space" id="SPACE"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
 </body>
 
