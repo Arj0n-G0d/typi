@@ -102,7 +102,7 @@ function typeTypi() {
     },2500);
 }
 
-if(window.screen.width<800) 
+if(window.screen.width<1000) 
     alert("OOPS!! Looks like you opened this website in a mobile. Kindly use a PC/Laptop for a better experience.");
 typeTypi();
 
