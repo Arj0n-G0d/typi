@@ -94,7 +94,7 @@ function typeTypi() {
     },400);
     setTimeout(()=>{
         clearInterval(timer);
-    },2000);
+    },1999);
     setTimeout(()=>{
         reader.classList.remove("typi");
         reader.classList.add("readerOrig");
