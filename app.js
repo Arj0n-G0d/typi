@@ -94,7 +94,7 @@ function typeTypi() {
     },400);
     setTimeout(()=>{
         clearInterval(timer);
-    },1999);
+    },2000);
     setTimeout(()=>{
         reader.classList.remove("typi");
         reader.classList.add("readerOrig");
@@ -102,6 +102,8 @@ function typeTypi() {
     },2500);
 }
 
+if(window.screen.width<800) 
+    alert("OOPS!! Looks like you opened this website in a mobile. Kindly use a PC/Laptop for a better experience.");
 typeTypi();
 
 document.body.addEventListener("keydown",(e)=>{
