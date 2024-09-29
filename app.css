@@ -390,3 +390,21 @@ body {
     color:#e5e5e5;
     text-align:center;
 }
+
+.madeBy {
+    position: absolute;
+    bottom:0;
+    width : 100%;
+    height : 50px;
+    color:#e5e5e5;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding:10px 0 10px 0;
+}
+
+.heart,.name {
+    font-size: 30px;
+    color:#fca311;
+}
