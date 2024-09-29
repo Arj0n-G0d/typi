@@ -32,7 +32,7 @@ TYPI is a minimalistic typing game designed to improve your typing speed and acc
 ## Demo
 
 ### TYPI Animation
-![Demo Image 1](demo_images/start.png)
+![Demo Image 1](demo_images/animation.png)
 
 ### Start Screen
 ![Demo Image 2](demo_images/start.png)
